@@ -7,35 +7,57 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>Library</header>
+    <header><h1>Library</h1></header>
     <ul>
+        <li class="card a">
+            <button class="card__remove">
+                <svg fill="#000000" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <polygon points="512,59.076 452.922,0 256,196.922 59.076,0 0,59.076 196.922,256 0,452.922 59.076,512 256,315.076 452.922,512 512,452.922 315.076,256 "></polygon> </g> </g> </g></svg>
+            </button>
+            <div class="content">
+                <span class="title">Title: </span>  
+                <span class="author">Author: </span>
+                <span class="pages">Pages: </span>
+            </div>
+            <label class="toggle-switch">
+                    Read
+                    <input class="card__checkbox" type="checkbox">
+                    <span class="slider"></span>
+            </label>
+        </li>
         <li>
             <dialog>
-                <button class="dialog-close">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#0F1729"></path> </g></svg>
-                </button>
-                <form method="dialog">
-                    <label>
-                        Title 
-                        <input type="text" name="book-title" pattern="[A-Za-z].+" placeholder="Harry potter" required>
-                    </label>
-                    <label>
-                        Author 
-                        <input type="text" name="book-author" pattern="[A-Za-z].+" placeholder="JK Rowling" required>
-                    </label>
-                    <label>
-                        Total Pages 
-                        <input type="text" name="book-pages" pattern="^(?!(0))[0-9]+$" m placeholder="1000" required>
-                    </label>
-                    <label id="toggleSwitch">
-                        Read
-                        <input type="checkbox" name="book-read">
-                        <span class="slider knob"></span>
-                    </label>
-                    <button>Submit</button>
-                </form>
+                <div>
+                    <h3>Add Book</h3>
+                    <form autocomplete="off"   method="dialog">
+                        <div class="row">
+                            <label> Title </label>
+                            <input type="text" name="book_title" pattern="[A-Za-z].+" placeholder="Harry potter" required>
+                        </div>
+                        <div class="row">
+                            <label>Author </label>
+                            <input type="text" name="book_author" pattern="[A-Za-z].+" placeholder="JK Rowling" required>
+                        </div>
+                        <div class="row">
+                            <label>Total Pages </label>                        
+                            <input type="text" name="book_pages" pattern="^(?!(0))[0-9]+$" m placeholder="1000" required>
+                        </div>
+                        <label class="row toggle-switch">
+                            Read
+                            <input type="checkbox" name="book_read">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="row">
+                            <button type="button" id="dialog__close">Cancel</button>
+                            <button type="submit" value="save">Submit</button>
+                        </span>
+                    </form>
+                </div>
             </dialog>
-            <button>Add Book</button>
+
+            <button id="dialog__open">
+                <svg fill="#000000" height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M281.672,48.328C250.508,17.163,209.073,0,164.999,0C120.927,0,79.492,17.163,48.328,48.328 c-64.333,64.334-64.333,169.011,0,233.345C79.492,312.837,120.927,330,165,330c44.073,0,85.508-17.163,116.672-48.328 C346.005,217.339,346.005,112.661,281.672,48.328z M260.46,260.46C234.961,285.957,201.06,300,165,300 c-36.06,0-69.961-14.043-95.46-39.54c-52.636-52.637-52.636-138.282,0-190.919C95.039,44.042,128.94,30,164.999,30 c36.06,0,69.961,14.042,95.46,39.54C313.095,122.177,313.095,207.823,260.46,260.46z"></path> <path d="M254.999,150H180V75c0-8.284-6.716-15-15-15s-15,6.716-15,15v75H75c-8.284,0-15,6.716-15,15s6.716,15,15,15h75v75 c0,8.284,6.716,15,15,15s15-6.716,15-15v-75h74.999c8.284,0,15-6.716,15-15S263.284,150,254.999,150z"></path> </g> </g></svg>
+            </button>
+
         </li>
     </ul>
     <script src="script.js"></script>

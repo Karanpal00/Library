@@ -1,0 +1,250 @@
+ /*/    Normalize   /*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input,
+button {
+  font: inherit;
+  border: none;
+  background-color: transparent;
+}
+
+button:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+    outline: auto;
+}
+
+dialog {
+    padding: 0;
+    border: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/*/ body layout /*/
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 75px 1fr;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+}
+
+/*/ header /*/
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+
+}
+
+/*/ slider button /*/
+
+.toggle-switch {
+    --switch-width: 3.5em;
+    --switch-height: 1.4em;
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch input:focus-visible + .slider {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* track */
+.slider {
+    position: relative;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    background-color: #ccc;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* knob */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: calc(var(--switch-height) - 0.4em);
+    width:  calc(var(--switch-height) - 0.4em);
+    left: 0.2em;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-switch input:checked + .slider {
+    background-color: #2196F3;
+}
+
+.toggle-switch input:checked + .slider::before {
+    transform: translate(
+        calc(var(--switch-width) - var(--switch-height)),
+        -50%
+    );
+}
+
+/*/ ul /*/
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    align-content: start;
+    gap: 40px;
+    width: min(70%, 1100px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    margin-top: 2rem;
+    min-height: 200px; 
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 0.75rem 0.75rem;
+}
+
+/*/ card /*/
+
+.card{
+    background: linear-gradient(to right, rgb(203, 203, 230), rgb(166, 110, 195));
+}
+
+.a {
+    display: none;
+}
+.card .content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card .content span {
+    display: block;
+    overflow-wrap: break-word ;
+}
+
+.card .content span + span {
+    margin-top: 0px;
+}
+
+button.card__remove {
+    width: min-content;
+    padding: 0 8px;
+    padding-top: 4px;
+    outline: none;
+    align-self: end;
+}
+
+button.card__remove svg:hover {
+    fill: red;
+}
+
+
+button.card__remove svg {
+    pointer-events: none;
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: black;
+}
+
+/*/ dialog /*/
+#dialog__open {
+    outline: none;
+}
+#dialog__open svg{
+    width: 4rem;
+    height: 4rem;
+    fill: rgba(6, 11, 6, 0.4);
+}
+
+#dialog__open svg:hover{
+    fill: rgba(129, 16, 146, 0.8);
+}
+
+dialog::backdrop {
+    background-color: gray;
+    opacity: 0.6;
+}
+
+dialog {
+    margin: auto;
+    width: max(25%, 350px);
+    max-height: 80vh;
+    overflow: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+dialog>div {
+    margin: auto;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0 0 0;
+
+}
+form {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    font-weight: 600;
+}
+
+.row {
+    position: relative;
+    margin:1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.row label {
+    position: absolute;
+}
+
+.row input {
+    position: absolute;
+    left:100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.row button {
+    padding: 4px 8px;
+    border-radius: 12px;
+    background-color: #4ea1ea;
+    color: white;
+}
