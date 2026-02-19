@@ -55,7 +55,7 @@ function Book(title, author, pages, read) {
     this.deepCopy.querySelector('.title').textContent += title;
     this.deepCopy.querySelector('.author').textContent += author;
     this.deepCopy.querySelector('.pages').textContent += pages;
-    this.deepCopy.querySelector('#card__checkbox').checked = read == 'on'? true:false;
+    this.deepCopy.querySelector('.card__checkbox').checked = read == 'on'? true:false;
 }
 
 //AddBookToLibrary & remove 
@@ -74,7 +74,6 @@ function removeBook(e) {
 
 // transition card
 function cardColorChange(e) {
-    console.log(e.target.nextElementSibling);
     if (e.target.checked) {
         e.target.parentElement.parentElement.style.background = "rgba(0,0,0,0.4)";
         e.target.nextElementSibling.style.background = 'rgba(0,0,0,0.2)'; 
