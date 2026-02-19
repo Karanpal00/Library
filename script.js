@@ -43,26 +43,28 @@ function extractFormData() {
 //book array
 const myLibrary = [];
 
-// book constructor
-function Book(title, author, pages, read) {
-    if (!new.target) {
-        throw new Error("This is a object constructor not a function, use with 'new'.");   
+// Book class
+class Book {
+    constructor(title, author, pages, read) {
+        this.cardDeepCopy = card.cloneNode(true);
+        this.id = crypto.randomUUID();
+        this.cardDeepCopy.classList = `card ${this.id}`;
+        this.cardDeepCopy.querySelector('.title').textContent += title;
+        this.cardDeepCopy.querySelector('.author').textContent += author;
+        this.cardDeepCopy.querySelector('.pages').textContent += pages;
+        this.cardDeepCopy.querySelector('.card__checkbox').checked = read == 'on'? true:false;
     }
 
-    this.deepCopy = card.cloneNode(true);
-    this.id = crypto.randomUUID();
-    this.deepCopy.classList = `card ${this.id}`;
-    this.deepCopy.querySelector('.title').textContent += title;
-    this.deepCopy.querySelector('.author').textContent += author;
-    this.deepCopy.querySelector('.pages').textContent += pages;
-    this.deepCopy.querySelector('.card__checkbox').checked = read == 'on'? true:false;
+    addBook () {
+        card.before(this.cardDeepCopy);
+        myLibrary.push(this.cardDeepCopy);
+    }
 }
 
 //AddBookToLibrary & remove 
 function addBookToDOM(formData) {
     const book = new Book (formData.book_title, formData.book_author, formData.book_pages, formData.book_read);
-    card.before(book.deepCopy);
-    myLibrary.push(book.deepCopy);
+    book.addBook();
 }   
 
 function removeBook(e) {
